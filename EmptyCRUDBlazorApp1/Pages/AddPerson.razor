@@ -1,0 +1,19 @@
+﻿@page "/add"
+@inject IPersonService service
+@inject NavigationManager nav
+
+<h3>Add Person</h3>
+<InputText @bind-Value=@Person.PersonName></InputText>
+
+<button @onclick="Save">Save</button>
+<button @onclick='()=>nav.NavigateTo("/")'>Cancel</button>
+
+@code{
+    Person Person=new Person();
+    void Save()
+    {
+        service.AddPerson(Person);
+        nav.NavigateTo("/");
+
+    }
+}
